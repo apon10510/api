@@ -1,5 +1,4 @@
-{
-  "people" : [
+[
     {
        "firstName": "Joe",
        "lastName": "Jackson",
@@ -22,4 +21,3 @@
        "number": "456754675"
     }
   ]
-}
