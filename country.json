@@ -9,13 +9,13 @@
         "appname": "Google",
         "applogo": "https://i.postimg.cc/2jKTpXR0/th-3723935822-removebg-preview.png" , 
         "webview" : "Webviewxx()", 
-        "url":"https://flutter.dev/"
+        "url":"https://www.youtube.com/"
     },
     {
         "appname": "Facebook",
         "applogo": "https://i.postimg.cc/2jKTpXR0/th-3723935822-removebg-preview.png" , 
         "webview" : "Webviewxx()", 
-        "url":"https://pub.dev/"
+        "url":"https://www.youtube.com/"
     },
     {
         "appname": "X",
