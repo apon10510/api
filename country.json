@@ -1,19 +1,19 @@
 [
     {
         "appname": "Youtube",
-        "applogo": "https://i.postimg.cc/2jKTpXR0/th-3723935822-removebg-preview.png" , 
+        "applogo": "https://i.postimg.cc/4x3Sdmng/instragram.png" , 
         "webview" : "Webviewxx()" , 
         "url":"https://www.youtube.com/"
     },
     {
         "appname": "Google",
-        "applogo": "https://i.postimg.cc/2jKTpXR0/th-3723935822-removebg-preview.png" , 
+        "applogo": "https://i.postimg.cc/4x3Sdmng/instragram.png" , 
         "webview" : "Webviewxx()", 
         "url":"https://www.youtube.com/"
     },
     {
         "appname": "Facebook",
-        "applogo": "https://i.postimg.cc/2jKTpXR0/th-3723935822-removebg-preview.png" , 
+        "applogo": "https://i.postimg.cc/4x3Sdmng/instragram.png" , 
         "webview" : "Webviewxx()", 
         "url":"https://www.youtube.com/"
     },
