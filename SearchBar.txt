@@ -1,0 +1,157 @@
+import 'package:flutter/material.dart';
+import 'package:search_page/search_page.dart';
+import '../../Data/Mobile_Home_Page_Data.dart';
+
+class MobileHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Widget List'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                showSearch(
+                  context: context,
+                  delegate: SearchPage<Map<String, dynamic>>(
+                    items: mobileHomePageData,
+                    searchLabel: 'Search Widgets',
+                    suggestion: Center(
+                      child: Text('Filter widgets by name'),
+                    ),
+                    failure: Center(
+                      child: Text('No widget found :('),
+                    ),
+                    filter: (widget) => [
+                      widget['WidgetNumber'].toString(),
+                      widget['WidgetName'],
+                    ],
+                    builder: (widget) => Card(
+                      elevation: 5,
+                      child: Container(
+                        height: 70,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: ListTile(
+                          title: Text(widget['WidgetName']),
+                          subtitle: Text('${widget['WidgetNumber']}'),
+                          onTap: () {},
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(Icons.search),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Search Widget',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                height: 70,
+                width: MediaQuery.of(context).size.width * 0.95,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(221, 232, 213, 213),
+                      offset: Offset(-3, -3),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(221, 233, 214, 214),
+                      offset: Offset(5, 5),
+                      spreadRadius: 1,
+                      blurRadius: 15,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            ListView.separated(
+              shrinkWrap: true,
+              separatorBuilder: (context, index) {
+                return SizedBox(
+                  height: 10,
+                );
+              },
+              itemCount: mobileHomePageData.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(221, 232, 213, 213),
+                          offset: Offset(-3, -3),
+                          spreadRadius: 1,
+                          blurRadius: 15,
+                        ),
+                        BoxShadow(
+                          color: const Color.fromARGB(221, 233, 214, 214),
+                          offset: Offset(5, 5),
+                          spreadRadius: 1,
+                          blurRadius: 15,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          mobileHomePageData[index]['WidgetNumber'].toString(),
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          mobileHomePageData[index]['WidgetName'].toString(),
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
