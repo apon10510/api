@@ -1,157 +1,166 @@
-import 'package:flutter/material.dart';
-import 'package:search_page/search_page.dart';
-import '../../Data/Mobile_Home_Page_Data.dart';
 
-class MobileHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Widget List'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            GestureDetector(
-              onTap: () {
-                showSearch(
-                  context: context,
-                  delegate: SearchPage<Map<String, dynamic>>(
-                    items: mobileHomePageData,
-                    searchLabel: 'Search Widgets',
-                    suggestion: Center(
-                      child: Text('Filter widgets by name'),
-                    ),
-                    failure: Center(
-                      child: Text('No widget found :('),
-                    ),
-                    filter: (widget) => [
-                      widget['WidgetNumber'].toString(),
-                      widget['WidgetName'],
-                    ],
-                    builder: (widget) => Card(
-                      elevation: 5,
-                      child: Container(
-                        height: 70,
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        child: ListTile(
-                          title: Text(widget['WidgetName']),
-                          subtitle: Text('${widget['WidgetNumber']}'),
-                          onTap: () {},
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Icon(Icons.search),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'Search Widget',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-                height: 70,
-                width: MediaQuery.of(context).size.width * 0.95,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color.fromARGB(221, 232, 213, 213),
-                      offset: Offset(-3, -3),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                    ),
-                    BoxShadow(
-                      color: const Color.fromARGB(221, 233, 214, 214),
-                      offset: Offset(5, 5),
-                      spreadRadius: 1,
-                      blurRadius: 15,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            ListView.separated(
-              shrinkWrap: true,
-              separatorBuilder: (context, index) {
-                return SizedBox(
-                  height: 10,
-                );
-              },
-              itemCount: mobileHomePageData.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromARGB(221, 232, 213, 213),
-                          offset: Offset(-3, -3),
-                          spreadRadius: 1,
-                          blurRadius: 15,
-                        ),
-                        BoxShadow(
-                          color: const Color.fromARGB(221, 233, 214, 214),
-                          offset: Offset(5, 5),
-                          spreadRadius: 1,
-                          blurRadius: 15,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          mobileHomePageData[index]['WidgetNumber'].toString(),
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          mobileHomePageData[index]['WidgetName'].toString(),
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+Main menu
+
+WikipediaThe Free Encyclopedia
+Search Wikipedia
+Search
+Create account
+Log in
+
+Personal tools
+Contents hide
+(Top)
+Widgets
+Framework architecture
+Toggle Framework architecture subsection
+Dart language
+Flutter engine
+Foundation library
+Design-specific widgets
+IDE support
+History
+See also
+References
+External links
+Flutter (software)
+
+Article
+Talk
+Read
+Edit
+View history
+
+Tools
+From Wikipedia, the free encyclopedia
+Flutter
+
+Original author(s)	Google
+Developer(s)	Google and community
+Initial release	Alpha (v0.0.6) / May 12, 2017; 6 years ago[1]
+Stable release	
+3.19.0[2] Edit this on Wikidata / 15 February 2024; 2 months ago
+Repository	
+github.com/flutter/flutter Edit this at Wikidata
+Written in	C, C++, Dart[3]
+Platform	Android, iOS, Google Fuchsia, Web platform, Linux, macOS and Windows
+Type	Application framework
+License	New BSD License
+Website	flutter.dev
+Flutter is an open-source UI software development kit created by Google. It can be used to develop cross platform applications from a single codebase for the web,[4] Fuchsia, Android, iOS, Linux, macOS, and Windows.[5] First described in 2015,[6][7] Flutter was released in May 2017. Flutter is used internally by Google in apps such as Google Pay[8] and Google Earth[9] as well as by other software developers including ByteDance[10] and Alibaba.[11]
+
+Flutter consists of both a UI language and a rendering engine. When a Flutter application is compiled, it ships with both the UI code and the rendering engine, which is about 4 MB compressed.[12] This is in contrast to many other UI frameworks that rely on a separate rendering engine and only ship the UI code, such as native Android apps which rely on the device-level Android SDK or HTML/JavaScript Web apps that rely on the user's HTML engine and JavaScript engine.[13][14] Flutter's complete control of its rendering pipeline makes supporting multiple platforms simpler as it only needs the platform to support running native code such as via the Android Java Native Interface rather than support Flutter's UI model in its entirety.
+
+Widgets
+The basic component in a Flutter program is a "widget", which can in turn consist of other widgets. A widget describes the logic, interaction, and design of a UI element with an implementation similar to React. Unlike other cross-platform toolkits such as React Native and Xamarin which draw widgets using native platform components, Flutter renders widgets itself on a per-pixel basis.
+
+There are two types of widgets: stateless and stateful. Stateless widgets only update if their inputs change, meaning they otherwise won't need to be rebuilt when other elements of the screen change, while stateful widgets can call the setState() method to update an internal state and redraw.[15]
+
+Although widgets are the primary method of constructing Flutter applications, they can also be bypassed in favor of directly drawing on a canvas. This feature has been occasionally used to implement game engines in Flutter.[16]
+
+Framework architecture
+Dart language
+Flutter apps are written in the Dart language. Release versions of Flutter apps on all platforms use ahead-of-time (AOT) compilation[17] except for on the Web where code is transpiled to JavaScript.[18]
+
+Flutter inherits Dart's Pub package manager and software repository, which allows users to publish and use custom packages as well as Flutter-specific plugins.[19]
+
+Flutter engine
+Flutter's engine, written primarily in C++, provides low-level rendering support using either Google's Skia graphics library or the custom "Impeller" graphics layer.[20] Additionally, it interfaces with platform-specific SDKs such as those provided by Android and iOS to implement features like accessibility, file and network I/O, native plugin support, etc.[21]
+
+Foundation library
+The Foundation library, written in Dart, provides basic classes and functions that are used to construct applications using Flutter, such as APIs to communicate with the engine.[21][22]
+
+Design-specific widgets
+The Flutter framework contains two sets of widgets that conform to specific design languages: Material Design widgets implement Google's design language of the same name, and Cupertino widgets implement Apple's iOS Human interface guidelines.[21][23][24][25] Flutter allows the developer to use either set of widgets on either platform, i.e. even Cupertino widgets on Android. Third party packages can be used to automatically adjust the app's design to the current operating system.[26]
+
+IDE support
+Flutter maintains official support for the following IDEs and editors via plugins:
+
+IntelliJ IDEA
+Android Studio
+Visual Studio Code
+Emacs
+Other IDEs can be used with community-supported plugins, or by using Flutter tools from the command line.[27] There are several tools emerging in the market that have started to utilize official Flutter IDE Framework and offer customized Graphical user interface builders.
+
+History
+The first version of Flutter was known as "Sky"[28] and ran on the Android operating system. It was unveiled at the 2015 Dart developer summit[29] with the stated intent of being able to render consistently at 120 frames per second.[27] During the keynote of Google Developer Days in Shanghai in September 2018, Google announced Flutter Release Preview 2. On December 4, 2018, Flutter 1.0 was released at the Flutter Live event. On December 11, 2019, Flutter 1.12 was released at the Flutter Interactive event.[30]
+
+On May 6, 2020, the Dart software development kit (SDK) version 2.8 and Flutter 1.17.0 were released, adding support for the Metal API as well as new Material widgets and network tracking development tools.
+
+On March 3, 2021, Google released Flutter 2 during an online Flutter Engage event. It added a Canvas Kit renderer for web as opposed to the HTML version before it, web specific widgets, early-access desktop application support for Windows, macOS, and Linux and improved Add-to-App APIs.[31] It also shipped with Dart 2.0 which included partial null-safety, which caused many breaking changes and issues with many external packages; however, the Flutter team included instructions and tools to mitigate these issues.[32]
+
+On September 8, 2021, Dart 2.14 and Flutter 2.5 were released with the latest version of Material Design called Material You.[33][34]
+
+On May 12, 2022, Flutter 3 and Dart 2.17 were released with support for all desktop platforms as stable.[35]
+
+On August 30, 2022, Flutter 3.3 was announced. It included Objective-C and Swift interop and an early preview of a new rendering engine called Impeller which aims to reduce stutter caused by shader compilation.[20]
+
+On January 25, 2023, Flutter 3.7 was announced.
+
+See also
+	Free and open-source software portal
+Apache Cordova
+Titanium SDK
+Codename One
+Mobile development framework
+NativeScript
+GTK
+React Native
+Xamarin
+References
+ Chris Bracken. "Release v0.0.6: Rev alpha branch version to 0.0.6, flutter 0.0.26 (#10010) · flutter/flutter". GitHub. Retrieved 2018-08-08.
+ Error: Unable to display the reference properly. See the documentation for details.
+ "FAQ - Flutter". Retrieved 2018-08-08.
+ Amadeo, Ron (2018-02-27). "Google starts a push for cross-platform app development with Flutter SDK". Ars Technica. Retrieved 2021-06-11.
+ Amadeo, Ron (8 May 2017). "Google's "Fuchsia" smartphone OS dumps Linux, has a wild new UI". Ars Technica. Retrieved 18 March 2018.
+ "With Flutter, Google Aims Dart to Mobile App Cross-Development". InfoQ. Retrieved 2022-03-17.
+ "Google announces Flutter 1.0, the first stable release of its cross-platform mobile development toolkit". Android Police. 2018-12-05. Retrieved 2022-03-17.
+ "Going global at Google Pay with Flutter".
+ "Check out the new @googleearth for iOS, Android, and web with UI built using Flutter, all from a single codebase".
+ "Increasing productivity by 33% at ByteDance with Flutter".
+ "Alibaba scales China's largest second-hand marketplace with Flutter".
+ "How big is the Flutter engine?".
+ "What makes Flutter unique?".
+ "Exploration of the Flutter Rendering Mechanism from Architecture to Source Code".
+ "Introduction to widgets". docs.flutter.dev. Retrieved 2022-10-06.
+ "Flame". flame-engine.org. Retrieved 2022-10-06.
+ stephenwzl (2018-08-01). "Flutter's Compilation Patterns". ProAndroidDev. Retrieved 2018-12-06.
+ "Building a web application with Flutter". docs.flutter.dev. Retrieved 2022-10-06.
+ "Using packages". docs.flutter.dev. Retrieved 2022-10-06.
+ Sneath, Tim (2022-08-30). "Announcing Flutter 3.3 at Flutter Vikings". Flutter. Retrieved 2022-10-06.
+ "Technical Overview - Flutter". flutter.dev. Retrieved 2017-12-13.
+ "foundation library - Dart API". docs.flutter.dev. Retrieved 2017-12-13.
+ "Material Design Widgets - Flutter". flutter.dev. Retrieved 2017-12-13.
+ "Cupertino (iOS-style) Widgets - Flutter". flutter.dev. Retrieved 2017-12-13.
+ "Human Interface Guidelines". developer.apple.com. Retrieved 2019-10-08.
+ "flutter_platform_widgets | Flutter Package". Dart packages. Retrieved 2023-01-14.
+ Amadeo, Ron (1 May 2015). "Google's Dart language on Android aims for Java-free, 120 FPS apps". Ars Technical.
+ Kulinski, Swav (2018-12-07). "Flutter — The sky's the limit". Kin + Carta Created. Retrieved 2023-06-20.
+ "Sky: An Experiment Writing Dart for Mobile (Dart Developer Summit 2015)". YouTube.
+ "Flutter: the first UI platform designed for ambient computing". Flutter blog. Retrieved 2019-12-11.
+ "Version 2 of Google's Flutter toolkit adds support for desktop and web apps". TechCrunch. Retrieved 2021-03-06.
+ "Migrating to null safety". dart.dev. Retrieved 2022-02-04.
+ Sells, Chris (2021-09-08). "What's new in Flutter 2.5". Flutter. Retrieved 2022-02-04.
+ "Flutter 2.5.0 release notes". docs.flutter.dev. Retrieved 2022-02-04.
+ "Flutter 3 Release Notes". docs.flutter.dev. Retrieved 2022-08-09.
+External links
+Official website Edit this at Wikidata
+vte
+Google free and open-source software
+Software	
+Applications	
+ChromiumGemmaOpenRefineTesseract
+Programming languages	
+CarbonDartGoSawzall
+Frameworks and
+development tools	
+AMPAngularAngularJSBeamBazelBlocklyClosure ToolsCpplintFlatBuffersFlutterGearsGerritGuavagRPCGsonGuetzliGuicegVisorKubernetesLevelDBlibvpxNaClOR-ToolsPolymerProtocol BuffersTensorFlowV8
+Operating systems	
+AOSPChromiumOSFuchsiagLinuxGoobuntu
+Related	
+Code-inGoogle LLC v. Oracle America, Inc.Open Source Security FoundationSummer of Code
+Categories: 2017 softwareGoogle softwareProgramming toolsFree software programmed in DartSoftware frameworksSoftware using the BSD license
+This page was last edited on 18 April 2024, at 04:27 (UTC).
+Text is available under the Creative Commons Attribution-ShareAlike License 4.0; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
+Privacy policyAbout WikipediaDisclaimersContact WikipediaCode of ConductDevelopersStatisticsCookie statementMobile viewWikimedia FoundationPowered by MediaWiki
+SquareX Safe File Viewer
+✕
