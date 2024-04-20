@@ -1,166 +1,1018 @@
+import 'package:flutter/material.dart';
+import 'dart:async';
 
-Main menu
+import 'dart:ui';
 
-WikipediaThe Free Encyclopedia
-Search Wikipedia
-Search
-Create account
-Log in
 
-Personal tools
-Contents hide
-(Top)
-Widgets
-Framework architecture
-Toggle Framework architecture subsection
-Dart language
-Flutter engine
-Foundation library
-Design-specific widgets
-IDE support
-History
-See also
-References
-External links
-Flutter (software)
+import 'dart:math' as math;
+//!AboutDialog
 
-Article
-Talk
-Read
-Edit
-View history
+class Widget001 extends StatefulWidget {
+  const Widget001({
+    Key? key,
+  }) : super(key: key);
 
-Tools
-From Wikipedia, the free encyclopedia
-Flutter
+  @override
+  State<Widget001> createState() => _Widget001State();
+}
 
-Original author(s)	Google
-Developer(s)	Google and community
-Initial release	Alpha (v0.0.6) / May 12, 2017; 6 years ago[1]
-Stable release	
-3.19.0[2] Edit this on Wikidata / 15 February 2024; 2 months ago
-Repository	
-github.com/flutter/flutter Edit this at Wikidata
-Written in	C, C++, Dart[3]
-Platform	Android, iOS, Google Fuchsia, Web platform, Linux, macOS and Windows
-Type	Application framework
-License	New BSD License
-Website	flutter.dev
-Flutter is an open-source UI software development kit created by Google. It can be used to develop cross platform applications from a single codebase for the web,[4] Fuchsia, Android, iOS, Linux, macOS, and Windows.[5] First described in 2015,[6][7] Flutter was released in May 2017. Flutter is used internally by Google in apps such as Google Pay[8] and Google Earth[9] as well as by other software developers including ByteDance[10] and Alibaba.[11]
+class _Widget001State extends State<Widget001> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        child: const Text('Show About Dialog'),
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const AboutDialog(
+              applicationIcon: FlutterLogo(),
+              applicationLegalese: 'Legalese',
+              applicationName: 'Flutter App',
+              applicationVersion: 'version 1.0.0',
+              children: [
+                Text('This is a text created by Flutter Mapp'),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
 
-Flutter consists of both a UI language and a rendering engine. When a Flutter application is compiled, it ships with both the UI code and the rendering engine, which is about 4 MB compressed.[12] This is in contrast to many other UI frameworks that rely on a separate rendering engine and only ship the UI code, such as native Android apps which rely on the device-level Android SDK or HTML/JavaScript Web apps that rely on the user's HTML engine and JavaScript engine.[13][14] Flutter's complete control of its rendering pipeline makes supporting multiple platforms simpler as it only needs the platform to support running native code such as via the Android Java Native Interface rather than support Flutter's UI model in its entirety.
 
-Widgets
-The basic component in a Flutter program is a "widget", which can in turn consist of other widgets. A widget describes the logic, interaction, and design of a UI element with an implementation similar to React. Unlike other cross-platform toolkits such as React Native and Xamarin which draw widgets using native platform components, Flutter renders widgets itself on a per-pixel basis.
 
-There are two types of widgets: stateless and stateful. Stateless widgets only update if their inputs change, meaning they otherwise won't need to be rebuilt when other elements of the screen change, while stateful widgets can call the setState() method to update an internal state and redraw.[15]
 
-Although widgets are the primary method of constructing Flutter applications, they can also be bypassed in favor of directly drawing on a canvas. This feature has been occasionally used to implement game engines in Flutter.[16]
 
-Framework architecture
-Dart language
-Flutter apps are written in the Dart language. Release versions of Flutter apps on all platforms use ahead-of-time (AOT) compilation[17] except for on the Web where code is transpiled to JavaScript.[18]
 
-Flutter inherits Dart's Pub package manager and software repository, which allows users to publish and use custom packages as well as Flutter-specific plugins.[19]
+class Widget002 extends StatelessWidget {
+  const Widget002({Key? key}) : super(key: key);
 
-Flutter engine
-Flutter's engine, written primarily in C++, provides low-level rendering support using either Google's Skia graphics library or the custom "Impeller" graphics layer.[20] Additionally, it interfaces with platform-specific SDKs such as those provided by Android and iOS to implement features like accessibility, file and network I/O, native plugin support, etc.[21]
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: AboutListTile(
+        icon: Icon(Icons.info),
+        applicationIcon: FlutterLogo(),
+        applicationLegalese: 'Legalese',
+        applicationName: 'Flutter App',
+        applicationVersion: 'version 1.0.0',
+        aboutBoxChildren: [
+          Text('This is a text created by Flutter Mapp'),
+        ],
+      ),
+    );
+  }
+}
 
-Foundation library
-The Foundation library, written in Dart, provides basic classes and functions that are used to construct applications using Flutter, such as APIs to communicate with the engine.[21][22]
 
-Design-specific widgets
-The Flutter framework contains two sets of widgets that conform to specific design languages: Material Design widgets implement Google's design language of the same name, and Cupertino widgets implement Apple's iOS Human interface guidelines.[21][23][24][25] Flutter allows the developer to use either set of widgets on either platform, i.e. even Cupertino widgets on Android. Third party packages can be used to automatically adjust the app's design to the current operating system.[26]
+class Widget003 extends StatelessWidget {
+  const Widget003({Key? key}) : super(key: key);
 
-IDE support
-Flutter maintains official support for the following IDEs and editors via plugins:
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        alignment: AlignmentDirectional.center,
+        children: <Widget>[
+          SizedBox(
+            width: 200.0,
+            height: 100.0,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: null,
+            ),
+          ),
+          SizedBox(
+            width: 100.0,
+            height: 200.0,
+            child: AbsorbPointer(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue.shade200,
+                ),
+                onPressed: () {},
+                child: null,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-IntelliJ IDEA
-Android Studio
-Visual Studio Code
-Emacs
-Other IDEs can be used with community-supported plugins, or by using Flutter tools from the command line.[27] There are several tools emerging in the market that have started to utilize official Flutter IDE Framework and offer customized Graphical user interface builders.
 
-History
-The first version of Flutter was known as "Sky"[28] and ran on the Android operating system. It was unveiled at the 2015 Dart developer summit[29] with the stated intent of being able to render consistently at 120 frames per second.[27] During the keynote of Google Developer Days in Shanghai in September 2018, Google announced Flutter Release Preview 2. On December 4, 2018, Flutter 1.0 was released at the Flutter Live event. On December 11, 2019, Flutter 1.12 was released at the Flutter Interactive event.[30]
 
-On May 6, 2020, the Dart software development kit (SDK) version 2.8 and Flutter 1.17.0 were released, adding support for the Metal API as well as new Material widgets and network tracking development tools.
+class Widget004 extends StatefulWidget {
+  const Widget004({Key? key}) : super(key: key);
 
-On March 3, 2021, Google released Flutter 2 during an online Flutter Engage event. It added a Canvas Kit renderer for web as opposed to the HTML version before it, web specific widgets, early-access desktop application support for Windows, macOS, and Linux and improved Add-to-App APIs.[31] It also shipped with Dart 2.0 which included partial null-safety, which caused many breaking changes and issues with many external packages; however, the Flutter team included instructions and tools to mitigate these issues.[32]
+  @override
+  State<Widget004> createState() => _Widget004State();
+}
 
-On September 8, 2021, Dart 2.14 and Flutter 2.5 were released with the latest version of Material Design called Material You.[33][34]
+class _Widget004State extends State<Widget004> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        child: const Text('Show Alert Dialog'),
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Close'),
+                ),
+              ],
+              title: const Text('Flutter Mapp'),
+              contentPadding: const EdgeInsets.all(20.0),
+              content: const Text('This is the Alert Dialog'),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
 
-On May 12, 2022, Flutter 3 and Dart 2.17 were released with support for all desktop platforms as stable.[35]
 
-On August 30, 2022, Flutter 3.3 was announced. It included Objective-C and Swift interop and an early preview of a new rendering engine called Impeller which aims to reduce stutter caused by shader compilation.[20]
+class Widget005 extends StatelessWidget {
+  const Widget005({Key? key}) : super(key: key);
 
-On January 25, 2023, Flutter 3.7 was announced.
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        height: 120.0,
+        width: double.infinity,
+        color: Colors.blueGrey,
+        child: const Align(
+          alignment: Alignment.bottomLeft,
+          child: FlutterLogo(
+            size: 60,
+          ),
+        ),
+      ),
+    );
+  }
+}
 
-See also
-	Free and open-source software portal
-Apache Cordova
-Titanium SDK
-Codename One
-Mobile development framework
-NativeScript
-GTK
-React Native
-Xamarin
-References
- Chris Bracken. "Release v0.0.6: Rev alpha branch version to 0.0.6, flutter 0.0.26 (#10010) · flutter/flutter". GitHub. Retrieved 2018-08-08.
- Error: Unable to display the reference properly. See the documentation for details.
- "FAQ - Flutter". Retrieved 2018-08-08.
- Amadeo, Ron (2018-02-27). "Google starts a push for cross-platform app development with Flutter SDK". Ars Technica. Retrieved 2021-06-11.
- Amadeo, Ron (8 May 2017). "Google's "Fuchsia" smartphone OS dumps Linux, has a wild new UI". Ars Technica. Retrieved 18 March 2018.
- "With Flutter, Google Aims Dart to Mobile App Cross-Development". InfoQ. Retrieved 2022-03-17.
- "Google announces Flutter 1.0, the first stable release of its cross-platform mobile development toolkit". Android Police. 2018-12-05. Retrieved 2022-03-17.
- "Going global at Google Pay with Flutter".
- "Check out the new @googleearth for iOS, Android, and web with UI built using Flutter, all from a single codebase".
- "Increasing productivity by 33% at ByteDance with Flutter".
- "Alibaba scales China's largest second-hand marketplace with Flutter".
- "How big is the Flutter engine?".
- "What makes Flutter unique?".
- "Exploration of the Flutter Rendering Mechanism from Architecture to Source Code".
- "Introduction to widgets". docs.flutter.dev. Retrieved 2022-10-06.
- "Flame". flame-engine.org. Retrieved 2022-10-06.
- stephenwzl (2018-08-01). "Flutter's Compilation Patterns". ProAndroidDev. Retrieved 2018-12-06.
- "Building a web application with Flutter". docs.flutter.dev. Retrieved 2022-10-06.
- "Using packages". docs.flutter.dev. Retrieved 2022-10-06.
- Sneath, Tim (2022-08-30). "Announcing Flutter 3.3 at Flutter Vikings". Flutter. Retrieved 2022-10-06.
- "Technical Overview - Flutter". flutter.dev. Retrieved 2017-12-13.
- "foundation library - Dart API". docs.flutter.dev. Retrieved 2017-12-13.
- "Material Design Widgets - Flutter". flutter.dev. Retrieved 2017-12-13.
- "Cupertino (iOS-style) Widgets - Flutter". flutter.dev. Retrieved 2017-12-13.
- "Human Interface Guidelines". developer.apple.com. Retrieved 2019-10-08.
- "flutter_platform_widgets | Flutter Package". Dart packages. Retrieved 2023-01-14.
- Amadeo, Ron (1 May 2015). "Google's Dart language on Android aims for Java-free, 120 FPS apps". Ars Technical.
- Kulinski, Swav (2018-12-07). "Flutter — The sky's the limit". Kin + Carta Created. Retrieved 2023-06-20.
- "Sky: An Experiment Writing Dart for Mobile (Dart Developer Summit 2015)". YouTube.
- "Flutter: the first UI platform designed for ambient computing". Flutter blog. Retrieved 2019-12-11.
- "Version 2 of Google's Flutter toolkit adds support for desktop and web apps". TechCrunch. Retrieved 2021-03-06.
- "Migrating to null safety". dart.dev. Retrieved 2022-02-04.
- Sells, Chris (2021-09-08). "What's new in Flutter 2.5". Flutter. Retrieved 2022-02-04.
- "Flutter 2.5.0 release notes". docs.flutter.dev. Retrieved 2022-02-04.
- "Flutter 3 Release Notes". docs.flutter.dev. Retrieved 2022-08-09.
-External links
-Official website Edit this at Wikidata
-vte
-Google free and open-source software
-Software	
-Applications	
-ChromiumGemmaOpenRefineTesseract
-Programming languages	
-CarbonDartGoSawzall
-Frameworks and
-development tools	
-AMPAngularAngularJSBeamBazelBlocklyClosure ToolsCpplintFlatBuffersFlutterGearsGerritGuavagRPCGsonGuetzliGuicegVisorKubernetesLevelDBlibvpxNaClOR-ToolsPolymerProtocol BuffersTensorFlowV8
-Operating systems	
-AOSPChromiumOSFuchsiagLinuxGoobuntu
-Related	
-Code-inGoogle LLC v. Oracle America, Inc.Open Source Security FoundationSummer of Code
-Categories: 2017 softwareGoogle softwareProgramming toolsFree software programmed in DartSoftware frameworksSoftware using the BSD license
-This page was last edited on 18 April 2024, at 04:27 (UTC).
-Text is available under the Creative Commons Attribution-ShareAlike License 4.0; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
-Privacy policyAbout WikipediaDisclaimersContact WikipediaCode of ConductDevelopersStatisticsCookie statementMobile viewWikimedia FoundationPowered by MediaWiki
-SquareX Safe File Viewer
-✕
+
+
+class Widget006 extends StatefulWidget {
+  const Widget006({Key? key}) : super(key: key);
+
+  @override
+  State<Widget006> createState() => _Widget006State();
+}
+
+class _Widget006State extends State<Widget006> {
+  bool selected = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selected = !selected;
+        });
+      },
+      child: Center(
+        child: Container(
+          width: double.infinity,
+          height: 250.0,
+          color: Colors.blueGrey,
+          child: AnimatedAlign(
+            alignment: selected ? Alignment.topRight : Alignment.bottomLeft,
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastOutSlowIn,
+            child: const FlutterLogo(size: 50.0),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+import 'package:flutter/material.dart';
+
+class Widget007 extends StatefulWidget {
+  const Widget007({Key? key}) : super(key: key);
+
+  @override
+  State<Widget007> createState() => _Widget007State();
+}
+
+class _Widget007State extends State<Widget007> with TickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 10),
+    vsync: this,
+  )..repeat();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AnimatedBuilder(
+        animation: _controller,
+        child: const FlutterLogo(
+          size: 100,
+        ),
+        builder: (BuildContext context, Widget? child) {
+          return Transform.rotate(
+            angle: _controller.value * 2.0 * math.pi,
+            child: child,
+          );
+        },
+      ),
+    );
+  }
+}
+
+class Widget008 extends StatefulWidget {
+  const Widget008({Key? key}) : super(key: key);
+
+  @override
+  State<Widget008> createState() => _Widget008State();
+}
+
+class _Widget008State extends State<Widget008> {
+  bool selected = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selected = !selected;
+        });
+      },
+      child: Center(
+        child: AnimatedContainer(
+          width: selected ? 200.0 : 100.0,
+          height: selected ? 100.0 : 200.0,
+          color: selected ? Colors.blueGrey : Colors.white,
+          alignment:
+              selected ? Alignment.center : AlignmentDirectional.topCenter,
+          duration: const Duration(seconds: 2),
+          curve: Curves.fastOutSlowIn,
+          child: const FlutterLogo(size: 75),
+        ),
+      ),
+    );
+  }
+}
+
+class Widget009 extends StatefulWidget {
+  const Widget009({Key? key}) : super(key: key);
+
+  @override
+  State<Widget009> createState() => _Widget009State();
+}
+
+class _Widget009State extends State<Widget009> {
+  bool _bool = true;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SizedBox(
+          width: double.infinity,
+          height: 100,
+        ),
+        TextButton(
+          onPressed: () {
+            setState(() {
+              _bool = !_bool;
+            });
+          },
+          child: const Text(
+            'Switch',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+        AnimatedCrossFade(
+          firstChild: Image.asset(
+            'assets/icon/blue.jpg',
+            width: double.infinity,
+          ),
+          secondChild: Image.asset(
+            'assets/icon/ocean.jpg',
+            width: double.infinity,
+          ),
+          crossFadeState:
+              _bool ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          duration: const Duration(seconds: 1),
+        ),
+      ],
+    );
+  }
+}
+
+
+
+class Widget010 extends StatefulWidget {
+  const Widget010({Key? key}) : super(key: key);
+
+  @override
+  State<Widget010> createState() => _Widget010State();
+}
+
+class _Widget010State extends State<Widget010> {
+  bool _first = true;
+  double _fontSize = 60;
+  Color _color = Colors.blue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        SizedBox(
+          height: 120,
+          child: AnimatedDefaultTextStyle(
+            duration: const Duration(milliseconds: 300),
+            style: TextStyle(
+              fontSize: _fontSize,
+              color: _color,
+              fontWeight: FontWeight.bold,
+            ),
+            child: const Text('Flutter'),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            setState(() {
+              _fontSize = _first ? 90 : 60;
+              _color = _first ? Colors.blue : Colors.red;
+              _first = !_first;
+            });
+          },
+          child: const Text(
+            "Switch",
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class Widget011 extends StatefulWidget {
+  const Widget011({Key? key}) : super(key: key);
+
+  @override
+  State<Widget011> createState() => _Widget11State();
+}
+
+class _Widget11State extends State<Widget011> with TickerProviderStateMixin {
+  bool _isPlay = false;
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: GestureDetector(
+        onTap: () {
+          if (_isPlay == false) {
+            _controller.forward();
+            _isPlay = true;
+          } else {
+            _controller.reverse();
+            _isPlay = false;
+          }
+        },
+        child: AnimatedIcon(
+          icon: AnimatedIcons.play_pause,
+          progress: _controller,
+          size: 100,
+        ),
+      ),
+    );
+  }
+}
+
+class Widget012 extends StatefulWidget {
+  const Widget012({Key? key}) : super(key: key);
+
+  @override
+  Widget012State createState() => Widget012State();
+}
+
+class Widget012State extends State<Widget012> {
+  final _items = [];
+  final GlobalKey<AnimatedListState> _key = GlobalKey();
+
+  void _addItem() {
+    _items.insert(0, "Item ${_items.length + 1}");
+    _key.currentState!.insertItem(
+      0,
+      duration: const Duration(seconds: 1),
+    );
+  }
+
+  void _removeItem(int index) {
+    _key.currentState!.removeItem(
+      index,
+      (_, animation) {
+        return SizeTransition(
+          sizeFactor: animation,
+          child: const Card(
+            margin: EdgeInsets.all(10),
+            color: Colors.red,
+            child: ListTile(
+              title: Text(
+                "Deleted",
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
+          ),
+        );
+      },
+      duration: const Duration(milliseconds: 300),
+    );
+    _items.removeAt(index);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        IconButton(
+          onPressed: _addItem,
+          icon: const Icon(Icons.add),
+        ),
+        Expanded(
+          child: AnimatedList(
+            key: _key,
+            initialItemCount: 0,
+            padding: const EdgeInsets.all(10),
+            itemBuilder: (context, index, animation) {
+              return SizeTransition(
+                key: UniqueKey(),
+                sizeFactor: animation,
+                child: Card(
+                  margin: const EdgeInsets.all(10),
+                  color: Colors.orangeAccent,
+                  child: ListTile(
+                    title: Text(
+                      _items[index],
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        _removeItem(index);
+                      },
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+class Widget013 extends StatefulWidget {
+  const Widget013({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _Widget013State();
+}
+
+class _Widget013State extends State<Widget013>
+    with SingleTickerProviderStateMixin {
+  bool _isPressed = false;
+  late Widget _animatedModalBarrier;
+
+  late AnimationController _animationController;
+  late Animation<Color?> _colorAnimation;
+
+  @override
+  void initState() {
+    ColorTween _colorTween = ColorTween(
+      begin: Colors.orangeAccent.withOpacity(0.5),
+      end: Colors.blueGrey.withOpacity(0.5),
+    );
+
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    _colorAnimation = _colorTween.animate(_animationController);
+
+    _animatedModalBarrier = AnimatedModalBarrier(
+      color: _colorAnimation,
+      dismissible: true,
+    );
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 100.0,
+              width: 250.0,
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.orangeAccent,
+                    ),
+                    child: const Text('Press'),
+                    onPressed: () {
+                      setState(() {
+                        _isPressed = true;
+                      });
+                      _animationController.reset();
+                      _animationController.forward();
+                      Future.delayed(const Duration(seconds: 3), () {
+                        setState(() {
+                          _isPressed = false;
+                        });
+                      });
+                    },
+                  ),
+                  if (_isPressed) _animatedModalBarrier,
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Widget014 extends StatefulWidget {
+  const Widget014({Key? key}) : super(key: key);
+
+  @override
+  State<Widget014> createState() => Widget014State();
+}
+
+class Widget014State extends State<Widget014> {
+  double opacityLevel = 1.0;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          AnimatedOpacity(
+            opacity: opacityLevel,
+            duration: const Duration(seconds: 2),
+            child: const FlutterLogo(
+              size: 50,
+            ),
+          ),
+          ElevatedButton(
+            child: const Text('Fade Logo'),
+            onPressed: () {
+              setState(
+                () => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0,
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+class Widget015 extends StatefulWidget {
+  const Widget015({Key? key}) : super(key: key);
+
+  @override
+  State<Widget015> createState() => _Widget015State();
+}
+
+class _Widget015State extends State<Widget015> {
+  double padValue = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.orangeAccent,
+          ),
+          child: const Text('Change padding'),
+          onPressed: () {
+            setState(() {
+              padValue = padValue == 0.0 ? 100.0 : 0.0;
+            });
+          },
+        ),
+        Text('Padding = $padValue'),
+        AnimatedPadding(
+          padding: EdgeInsets.all(padValue),
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeInOut,
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 4,
+            color: Colors.orangeAccent,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Widget016 extends StatefulWidget {
+  const Widget016({Key? key}) : super(key: key);
+
+  @override
+  Widget016State createState() => Widget016State();
+}
+
+class Widget016State extends State<Widget016> {
+  bool _isFlat = true;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          AnimatedPhysicalModel(
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.fastOutSlowIn,
+            elevation: _isFlat ? 0 : 6.0,
+            shape: BoxShape.rectangle,
+            shadowColor: Colors.black,
+            color: Colors.white,
+            child: const SizedBox(
+              height: 120.0,
+              width: 120.0,
+              child: Icon(Icons.android_outlined),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            child: const Text('Click'),
+            onPressed: () {
+              setState(() {
+                _isFlat = !_isFlat;
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+class Widget017 extends StatefulWidget {
+  const Widget017({Key? key}) : super(key: key);
+
+  @override
+  State<Widget017> createState() => _Widget017State();
+}
+
+class _Widget017State extends State<Widget017> {
+  bool selected = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 200,
+      height: 350,
+      child: Stack(
+        children: <Widget>[
+          AnimatedPositioned(
+            width: selected ? 200.0 : 50.0,
+            height: selected ? 50.0 : 200.0,
+            top: selected ? 50.0 : 150.0,
+            duration: const Duration(seconds: 2),
+            curve: Curves.fastOutSlowIn,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  selected = !selected;
+                });
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.orangeAccent,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+class Widget018 extends StatefulWidget {
+  const Widget018({Key? key}) : super(key: key);
+
+  @override
+  State<Widget018> createState() => Widget018State();
+}
+
+class Widget018State extends State<Widget018> {
+  double turns = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(50),
+            child: AnimatedRotation(
+              turns: turns,
+              duration: const Duration(seconds: 1),
+              child: const FlutterLogo(
+                size: 100,
+              ),
+            ),
+          ),
+          ElevatedButton(
+            child: const Text('Rotate Logo'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orangeAccent,
+            ),
+            onPressed: () {
+              setState(() => turns += 1 / 4);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+class Widget019 extends StatefulWidget {
+  const Widget019({Key? key}) : super(key: key);
+
+  @override
+  State<Widget019> createState() => _Widget019State();
+}
+
+class _Widget019State extends State<Widget019> {
+  double _size = 300;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _size = _size == 300 ? 100 : 300;
+        });
+      },
+      child: Container(
+        color: Colors.white,
+        child: AnimatedSize(
+          curve: Curves.easeIn,
+          duration: const Duration(seconds: 1),
+          child: FlutterLogo(size: _size),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class Widget020 extends StatefulWidget {
+  const Widget020({Key? key}) : super(key: key);
+
+  @override
+  State<Widget020> createState() => _Widget020State();
+}
+
+class _Widget020State extends State<Widget020> {
+  int _count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 500),
+            child: Text(
+              '$_count',
+              style: const TextStyle(fontSize: 40),
+              key: ValueKey(_count),
+            ),
+            transitionBuilder: (Widget child, Animation<double> animation) {
+              return ScaleTransition(scale: animation, child: child);
+            },
+          ),
+          ElevatedButton(
+            child: const Text('Add'),
+            onPressed: () {
+              setState(() {
+                _count += 1;
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+/// AnimationControllers can be created with `vsync: this` because of TickerProviderStateMixin.
+class _MyStatefulWidgetState extends State<MyStatefulWidget>
+    with TickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 10),
+    vsync: this,
+  )..repeat();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TheWidget(controller: _controller);
+  }
+}
+
+class TheWidget extends AnimatedWidget {
+  const TheWidget({
+    Key? key,
+    required AnimationController controller,
+  }) : super(key: key, listenable: controller);
+
+  Animation<double> get _progress => listenable as Animation<double>;
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.rotate(
+      angle: _progress.value * 2.0 * math.pi,
+      child: Container(width: 200.0, height: 200.0, color: Colors.green),
+    );
+  }
+}
+
+
+
+class Widget021 extends StatelessWidget {
+  const Widget021({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Mapp'),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {},
+          ),
+        ],
+        backgroundColor: Colors.orangeAccent,
+        leading: IconButton(
+          onPressed: () {},
+          icon: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {},
+          ),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+      ),
+      body: const Center(
+        child: Text(
+          'Body',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class Widget022 extends StatelessWidget {
+  const Widget022({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.orangeAccent,
+      alignment: Alignment.center,
+      width: double.infinity,
+      height: 300,
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: Colors.blueGrey,
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class Widget023 extends StatelessWidget {
+  const Widget023({Key? key}) : super(key: key);
+
+  static const List<String> listItems = <String>[
+    'apple',
+    'banana',
+    'melon',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Autocomplete<String>(
+      optionsBuilder: (TextEditingValue textEditingValue) {
+        if (textEditingValue.text == '') {
+          return const Iterable<String>.empty();
+        }
+        return listItems.where((String item) {
+          return item.contains(textEditingValue.text.toLowerCase());
+        });
+      },
+      onSelected: (String item) {
+        print('The $item was selected');
+      },
+    );
+  }
+}
+
